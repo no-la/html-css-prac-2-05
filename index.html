@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>いろいろなやつ</title>
+        <style>
+            table{
+                border-collapse: collapse;
+            }
+
+            th, td{
+                border: 1px solid gray;
+            }
+
+            dt{
+                font-weight: 550;
+            }
+            video{
+                width: 400px;
+            }
+
+            #contenteditable{
+                font-size: 30px;
+                font-weight: 700;
+                font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+                color: rgb(255, 0, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <ol>
+            <li>国語</li>
+            <li>数学</li>
+            <li>英語</li>
+        </ol>
+
+        <ol reversed>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+        </ol>
+
+        <ul>
+            <li>鉛筆</li>
+            <li>消しゴム</li>
+            <li>受験票</li>
+        </ul>
+
+        <dl>
+            <dt>シロイルカ</dt>
+            <dd>白いイルカです。</dd>
+            <dt>シロクマ</dt>
+            <dd>白いクマです。</dd>
+            <dt>シロナガスクジラ</dt>
+            <dd>白いナガスクジラです。</dd>
+        </dl>
+
+        <table>
+            <caption>一覧表</caption>
+            <tr>
+                <th>氏名</th>
+                <th>年齢</th>
+                <th>身長</th>
+                <th>体重</th>
+            </tr>
+            <tr>
+                <td>Aさん</td>
+                <td>103</td>
+                <td>162</td>
+                <td>51</td>
+            </tr>
+            <tr>
+                <td>Bさん</td>
+                <td>119</td>
+                <td>123</td>
+                <td>38</td>
+            </tr>
+            <tr>
+                <td>Zさん</td>
+                <td>74</td>
+                <td>285</td>
+                <td>191</td>
+            </tr>
+        </table>
+
+        <pre>ゴリちゃん😃♥ 😚(^o^)(^з<)
+おじさん明日も仕事だけどなかなか寝れないよ〜💦(￣Д￣；；(◎ ＿◎;)(・_・;😰(^▽^;)
+早くゴリちゃんに会いたいよ😱💔(-_-;)なんてね(^з<)
+😚ゆっくり、身体休めてネ😃♥ オヤスミナサイ✋😪(^^;;(＃￣З￣)
+        </pre>
+            
+        <details>
+            <summary>Q&A</summary>
+            <dl>
+                <dt>アルファベット順においてAの次はBですか？</dt>
+                <dd>はい。アルファベット順においてAの次はBです。</dd>
+                <dt>アルファベット順においてBの次はCですか？</dt>
+                <dd>はい。アルファベット順においてBの次はCです。</dd>
+            </dl>
+        </details>
+        
+        <p>では皆さん、この俳句の「蝉」に注目しましょう。よくわかるようにハイライト表示しています。皆さんは・・・</p>
+        <blockquote> <!--blockquoteは引用を表す要素 上下に一行ずつ空白が入ったり入らなかったりする-->
+            <p>静けさや<br>岩に染み入る<br><mark>蝉</mark>の声</p>
+        </blockquote>
+
+        <p>進捗状況：<progress value="40" max="100">40%</progress></p> <!--間の数は表示されないが、検索エンジンに伝えるために書く-->
+
+        <div>
+            <p>測定状況(20%)：<meter value="20" min="0" max="100" optimum=0 low=30 high=80>20%</meter></p>
+            <p>測定状況(50%)：<meter value="50" min="0" max="100" optimum=0 low=30 high=80>50%</meter></p>
+            <p>測定状況(90%)：<meter value="90" min="0" max="100" optimum=0 low=30 high=80>90%</meter></p> <!--low, highを境に色が変わる optimumは最適値-->
+        </div>
+
+        <p><audio src="eirianeirian.wav" controls></audio></p> <!--controls属性で再生ボタンが表示される autoplayできない-->
+
+        <p><video src="コンポ 1_Trim.mp4" controls autoplay muted playsinline></video></p> <!--mutedにするとautoplayできる playsinlineは動画再生時に勝手に全画面になるのを防ぐ-->
+
+        <div id="graph">
+            <canvas id="mycanvas1" width="200" height="200" ></canvas> <!--円グラフをつくる-->
+            <canvas id="mycanvas2" width="200" height="200" ></canvas> <!--棒グラフをつくる-->
+            <canvas id="mycanvas3" width="200" height="200" ></canvas> <!--折れ線グラフをつくる-->
+            <script>
+                const mycanvas1 = document.getElementById("mycanvas1");
+                const myctx1 = mycanvas1.getContext("2d");
+                let a = 240;
+                myctx1.fillStyle = `rgb(${a}, ${a}, ${a})`; //`(shift + @)で囲む
+                myctx1.fillRect(0, 0, mycanvas1.width, mycanvas1.height);
+                myctx1.beginPath();
+                myctx1.moveTo(100, 100);
+                myctx1.arc(100, 100, 80, deg(0), deg(200), false); //円の中心の座標、半径、始点の角度、終点の角度、反時計回り
+                myctx1.closePath();
+                myctx1.fillStyle = "skyblue";
+                myctx1.fill();
+    
+                myctx1.beginPath();
+                myctx1.moveTo(100, 100);
+                myctx1.arc(100, 100, 80, deg(200), deg(360), false);
+                myctx1.closePath();
+                myctx1.fillStyle = "pink";
+                myctx1.fill();
+    
+                function deg(deg){
+                    return (deg-90)/180*Math.PI;
+                }
+    
+                const mycanvas2 = document.getElementById("mycanvas2");
+                const myctx2 = mycanvas2.getContext("2d");
+                myctx2.fillStyle = `rgb(${a}, ${a}, ${a})`;
+                myctx2.fillRect(0, 0, mycanvas2.width, mycanvas2.height);
+                myctx2.fillStyle = "skyblue";
+                myctx2.fillRect(0, 200, 100, y(100));
+    
+                myctx2.fillStyle = "pink";
+                myctx2.fillRect(100, 200, 100, y(150));
+    
+                function y(y){
+                    return -y;
+                }
+    
+                const mycanvas3 = document.getElementById("mycanvas3");
+                const myctx3 = mycanvas3.getContext("2d");
+                myctx3.fillStyle = `rgb(${a}, ${a}, ${a})`;
+                myctx3.fillRect(0, 0, mycanvas3.width, mycanvas3.height);
+                myctx3.strokeStyle = "skyblue";
+                myctx3.beginPath();
+                myctx3.moveTo(0, y3(0));
+                myctx3.lineTo(100, y3(50));
+                myctx3.lineTo(200, y3(150));
+                myctx3.stroke();
+    
+                function y3(y){
+                    return 200 - y;
+                }
+    
+            </script>
+        </div>
+        
+        <div id="input">
+            <p>
+                <input type="text"> <!--typeは入力する値の種類を指定する-->
+            </p>
+    
+            <p>
+                スライダ：<input type="range">
+            </p>
+    
+            <p>
+                スライダ：<input type="range" min="0" max="10" step="2" value="50">
+            </p>
+    
+            <p>
+                日付：<input type="date">
+            </p>
+    
+            <p>
+                時間：<input type="time">
+            </p>
+    
+            <p>
+                色：<input type="color">
+            </p>
+    
+            <p>
+                数字：<input type="number" min="0" max="50" step="2">
+            </p>
+    
+            <p>
+                電話：<input type="tel"> <!--telのときは、スマホではキーボードがテンキーになる-->
+            </p>
+    
+            <p>
+                URL：<input type="url"> <!--urlのときは、スマホでキーボードに「.」「/」「jp」などが表示されてURLが入力しやすい-->
+            </p>
+
+            <p>
+                電子メール：<input type="email"> <!--不適切な入力に対して警告してくれる（らしい）-->
+            </p>
+
+            <p>
+                受けたいコース<input type="text" name="course" list="html5"> <!--nameはidみたいなもの。javascriptから呼ぶときに使ったりする-->
+            </p>
+            <datalist id="html5">
+                <option value="マークアップ"></option>
+                <option value="CSS3"></option>
+                <option value="JavaScript"></option>
+            </datalist>
+
+            <p>
+                <label> <!--ボタンのラベルを指定する ラベル(テキスト)をクリックして選択できるようになる-->
+                    <input type="radio" name="radio">L <!--nameに同じものを指定することでグループ化され、グループ内で選択できるのは１つだけ-->
+                </label>
+                <label>
+                    <input type="radio" name="radio">M
+                </label>
+                <label>
+                    <input type="radio" name="radio">S
+                </label>
+            </p>
+
+            <p>生年月日を選んでください
+                <select>
+                    <option value="1">1月</option> <!--1月が選択肢で、それを選ぶとvalue(=1)返る-->
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                </select>
+            </p>
+
+            <p>
+                複数行入力：<textarea></textarea> <!--複数行入力-->
+            </p>
+
+            <form method="get" action="example.php"> <!--よくわからん chapter5でやるらしい-->
+                <p>これはフォームです</p>
+                <p>
+                    <input type="text" name="name">
+                </p>
+                <p>
+                    <input type="submit" value="送信">
+                </p>
+            </form>
+        </div>
+
+        <div id="contenteditable" contenteditable="true">
+            クリックしてください。編集できます。
+        </div>
+
+        <p hidden> <!--hiddenは要素をページ上で非表示にする cssとかから使うらしいけどよくわからん-->
+            今は無関係な要素。結果的に表示されていない
+        </p>
+    </body>
+</html>
